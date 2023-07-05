@@ -21,7 +21,15 @@
     <Compile Include="GlobalTextList.TcGTLO">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="GVLs\Cell.TcGVL">
+      <SubType>Code</SubType>
+      <LinkAlways>true</LinkAlways>
+    </Compile>
     <Compile Include="GVLs\SEQ.TcGVL">
+      <SubType>Code</SubType>
+      <LinkAlways>true</LinkAlways>
+    </Compile>
+    <Compile Include="GVLs\VAL.TcGVL">
       <SubType>Code</SubType>
       <LinkAlways>true</LinkAlways>
     </Compile>
@@ -53,6 +61,9 @@
     <Compile Include="POUs\SequencyControl.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\Simulation.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\ValveControl.TcPOU">
       <SubType>Code</SubType>
     </Compile>
@@ -81,9 +92,6 @@
     <Compile Include="VISUs\Visualization_1.TcVIS">
       <SubType>Code</SubType>
       <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
-    </Compile>
-    <Compile Include="VISU_TASK.TcTTO">
-      <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <GVL Name="VAL" Id="{a166baff-0429-40c5-bd3c-25de24183f1d}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+	bValve_A_WorkCmd:BOOL;
+	bValve_A_HomeCmd:BOOL;
+	bValve_A_AtWorkSensor:BOOL;
+	bValve_A_AtHomeSensor:BOOL;
+	
+    bValve_B_WorkCmd:BOOL;
+	bValve_B_HomeCmd:BOOL;
+	bValve_B_AtWorkSensor:BOOL;
+	bValve_B_AtHomeSensor:BOOL;
+	
+	bValve_C_WorkCmd:BOOL;
+	bValve_C_HomeCmd:BOOL;
+	bValve_C_AtWorkSensor:BOOL;
+	bValve_C_AtHomeSensor:BOOL;
+	
+	bValve_D_WorkCmd:BOOL;
+	bValve_D_HomeCmd:BOOL;
+	bValve_D_AtWorkSensor:BOOL;
+	bValve_D_AtHomeSensor:BOOL;
+	
+	bAllValves_At_Home:BOOL;
+	
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

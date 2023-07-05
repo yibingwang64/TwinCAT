@@ -6,10 +6,86 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[]]></ST>
+      <ST><![CDATA[IF (SEQ.iSeqStepN=0 OR SEQ.iSeqStepN=30) THEN
+	VAL.bValve_A_HomeCmd:=TRUE;
+	VAL.bValve_A_WorkCmd:=FALSE;
+	VAL.bValve_B_HomeCmd:=TRUE;
+	VAL.bValve_B_WorkCmd:=FALSE;
+	VAL.bValve_C_HomeCmd:=TRUE;
+	VAL.bValve_C_WorkCmd:=FALSE;
+	VAL.bValve_D_HomeCmd:=TRUE;
+	VAL.bValve_D_WorkCmd:=FALSE;
+END_IF
+//A
+IF (SEQ.iSeqStepN=5 OR SEQ.iSeqStepN=10)THEN
+	VAL.bValve_A_WorkCmd:=TRUE;
+	VAL.bValve_A_HomeCmd :=FALSE;
+ELSE
+	VAL.bValve_A_WorkCmd:=FALSE;
+	VAL.bValve_A_HomeCmd :=TRUE;
+END_IF
+//B
+IF (SEQ.iSeqStepN=10 OR SEQ.iSeqStepN=15)THEN
+	VAL.bValve_B_WorkCmd:=TRUE;
+	VAL.bValve_B_HomeCmd :=FALSE;
+ELSE
+	VAL.bValve_B_WorkCmd:=FALSE;
+	VAL.bValve_B_HomeCmd :=TRUE;	
+END_IF
+//C Valve
+IF (SEQ.iSeqStepN>=15 AND SEQ.iSeqStepN<=25)THEN
+	VAL.bValve_C_WorkCmd:=TRUE;
+	VAL.bValve_C_HomeCmd :=FALSE;
+ELSE
+	VAL.bValve_C_WorkCmd:=FALSE;
+	VAL.bValve_C_HomeCmd :=TRUE;	
+END_IF
+
+//D Valve
+IF (SEQ.iSeqStepN=25)THEN
+	VAL.bValve_D_WorkCmd:=TRUE;
+	VAL.bValve_D_HomeCmd :=FALSE;
+ELSE
+	VAL.bValve_D_WorkCmd:=FALSE;
+	VAL.bValve_D_HomeCmd :=TRUE;	
+END_IF
+
+////Home
+//IF (SEQ.iSeqStepN=30)THEN
+//	VAL.bValve_D_WorkCmd:=TRUE;
+//	VAL.bValve_D_HomeCmd :=FALSE;
+//ELSE
+//	VAL.bValve_B_WorkCmd:=FALSE;
+//	VAL.bValve_B_HomeCmd :=TRUE;	
+VAL.bAllValves_At_Home:=VAL.bValve_A_AtHomeSensor AND VAL.bValve_B_AtHomeSensor AND VAL.bValve_C_AtHomeSensor AND VAL.bValve_D_AtHomeSensor; 
+]]></ST>
     </Implementation>
     <LineIds Name="ValveControl">
+      <LineId Id="58" Count="1" />
+      <LineId Id="61" Count="6" />
+      <LineId Id="60" Count="0" />
+      <LineId Id="13" Count="0" />
       <LineId Id="5" Count="0" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="11" Count="0" />
+      <LineId Id="54" Count="0" />
+      <LineId Id="57" Count="0" />
+      <LineId Id="56" Count="0" />
+      <LineId Id="10" Count="0" />
+      <LineId Id="15" Count="5" />
+      <LineId Id="22" Count="0" />
+      <LineId Id="14" Count="0" />
+      <LineId Id="23" Count="0" />
+      <LineId Id="26" Count="5" />
+      <LineId Id="24" Count="0" />
+      <LineId Id="33" Count="0" />
+      <LineId Id="35" Count="7" />
+      <LineId Id="53" Count="0" />
+      <LineId Id="43" Count="0" />
+      <LineId Id="48" Count="4" />
+      <LineId Id="47" Count="0" />
+      <LineId Id="34" Count="0" />
+      <LineId Id="32" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

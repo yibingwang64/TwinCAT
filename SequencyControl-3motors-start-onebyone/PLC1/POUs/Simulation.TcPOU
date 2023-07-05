@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="Simulation" Id="{af3556ba-86fc-4643-ae50-def7bac0638d}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM Simulation
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[VAL.bValve_A_AtHomeSensor:=VAL.bValve_A_HomeCmd;
+VAL.bValve_A_AtWorkSensor:=VAL.bValve_A_WorkCmd;
+
+VAL.bValve_B_AtHomeSensor:=VAL.bValve_B_HomeCmd;
+VAL.bValve_B_AtWorkSensor:=VAL.bValve_B_WorkCmd;
+
+VAL.bValve_C_AtHomeSensor:=VAL.bValve_C_HomeCmd;
+VAL.bValve_C_AtWorkSensor:=VAL.bValve_C_WorkCmd;
+
+VAL.bValve_D_AtHomeSensor:=VAL.bValve_D_HomeCmd;
+VAL.bValve_D_AtWorkSensor:=VAL.bValve_D_WorkCmd;]]></ST>
+    </Implementation>
+    <LineIds Name="Simulation">
+      <LineId Id="5" Count="1" />
+      <LineId Id="8" Count="1" />
+      <LineId Id="7" Count="0" />
+      <LineId Id="11" Count="1" />
+      <LineId Id="10" Count="0" />
+      <LineId Id="14" Count="1" />
+      <LineId Id="13" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

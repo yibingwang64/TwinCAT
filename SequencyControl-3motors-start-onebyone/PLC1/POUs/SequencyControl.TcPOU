@@ -10,7 +10,7 @@ END_VAR
       <ST><![CDATA[CASE SEQ.iSeqStepN OF 
 	 0:    //INIT
 		 SEQ.sSeqStepDescription:='Init';
-		 SEQ.bSeqStep_TaskDone[0]:=TRUE;  //trigger the sequency
+		 SEQ.bSeqStep_TaskDone[0]:=VAL.bAllValves_At_Home AND Cell.bHousingPresent AND Cell.bPalmButton;  //trigger the sequency
 		 IF SEQ.bSeqStepN_TaskDone_DelayDone[0] THEN
 			 FOR index:=1 TO SEQ.iStepN DO
 				 SEQ.bSeqStep_TaskDone[index]:=FALSE;
@@ -18,8 +18,8 @@ END_VAR
 			 seq.iSeqStepN:=5;
 		 END_IF
 	5:
-		 SEQ.sSeqStepDescription:='';
-		 SEQ.bSeqStep_TaskDone[5]:=TRUE;
+		 SEQ.sSeqStepDescription:='Loading parts to hoursing';
+		 SEQ.bSeqStep_TaskDone[5]:=VAL.bValve_A_AtWorkSensor;
 		 IF SEQ.bSeqStepN_TaskDone_DelayDone[5] THEN
 			 FOR index:=6 TO SEQ.iStepN DO
 				 SEQ.bSeqStep_TaskDone[index]:=FALSE;
@@ -27,8 +27,8 @@ END_VAR
 			 seq.iSeqStepN:=10;
 		 END_IF
 	10:
-		 SEQ.sSeqStepDescription:='';
-		 SEQ.bSeqStep_TaskDone[10]:=TRUE;
+		 SEQ.sSeqStepDescription:='Clamp house';
+		 SEQ.bSeqStep_TaskDone[10]:=VAL.bValve_A_AtWorkSensor AND VAl.bValve_B_AtWorkSensor;
 		 IF SEQ.bSeqStepN_TaskDone_DelayDone[10] THEN
 			 FOR index:=11 TO SEQ.iStepN DO
 				 SEQ.bSeqStep_TaskDone[index]:=FALSE;
@@ -36,8 +36,8 @@ END_VAR
 			 seq.iSeqStepN:=15;
 		 END_IF
 	15:
-  	     SEQ.sSeqStepDescription:='';
-		 SEQ.bSeqStep_TaskDone[15]:=TRUE;
+  	     SEQ.sSeqStepDescription:='Press/crimp the housing';
+		 SEQ.bSeqStep_TaskDone[15]:=VAL.bValve_B_AtWorkSensor AND VAL.bValve_C_AtWorkSensor AND VAL.bValve_A_AtHomeSensor;
 		 IF SEQ.bSeqStepN_TaskDone_DelayDone[15] THEN
 			 FOR index:=0 TO SEQ.iStepN DO
 				 SEQ.bSeqStep_TaskDone[index]:=FALSE;
@@ -45,18 +45,27 @@ END_VAR
 			 seq.iSeqStepN:=20;
 		 END_IF
 	20:
-  	     SEQ.sSeqStepDescription:='';
-		 SEQ.bSeqStep_TaskDone[20]:=TRUE;
+  	     SEQ.sSeqStepDescription:='Open clamp';
+		 SEQ.bSeqStep_TaskDone[20]:=VAl.bValve_B_AtHomeSensor;
 		 IF SEQ.bSeqStepN_TaskDone_DelayDone[20] THEN
 			 FOR index:=21 TO SEQ.iStepN DO
 				 SEQ.bSeqStep_TaskDone[index]:=FALSE;
 			 END_FOR
 			 seq.iSeqStepN:=25;
 		 END_IF
-	25:
-		 SEQ.sSeqStepDescription:='';
-		 SEQ.bSeqStep_TaskDone[25]:=TRUE;
+	25:  //work on cyl D
+		 SEQ.sSeqStepDescription:='Heat houring for 10s';
+		 SEQ.bSeqStep_TaskDone[25]:=VAL.bValve_D_AtWorkSensor AND VAL.bValve_C_AtWorkSensor;
 		 IF SEQ.bSeqStepN_TaskDone_DelayDone[25] THEN
+			 FOR index:=26 TO SEQ.iStepN DO
+				 SEQ.bSeqStep_TaskDone[index]:=FALSE;
+			 END_FOR
+			 seq.iSeqStepN:=30;
+		 END_IF
+	30:  //home, home cyn C and Cyn B
+		 SEQ.sSeqStepDescription:='Stop heat, open clamp';
+		 SEQ.bSeqStep_TaskDone[30]:=VAL.bValve_C_AtHomeSensor AND VAL.bValve_D_AtHomeSensor;
+		 IF SEQ.bSeqStepN_TaskDone_DelayDone[30] THEN
 //			 FOR index:=26 TO SEQ.iStepN DO
 //				 SEQ.bSeqStep_TaskDone[index]:=FALSE;
 //			 END_FOR
@@ -76,7 +85,8 @@ SEQ.fbSeqStepN_TaskDone_DelayTmr[5](IN:= SEQ.bSeqStep_TaskDone[5], PT:=T#2S , Q=
 SEQ.fbSeqStepN_TaskDone_DelayTmr[10](IN:= SEQ.bSeqStep_TaskDone[10], PT:=T#2S , Q=>SEQ.bSeqStepN_TaskDone_DelayDone[10] );
 SEQ.fbSeqStepN_TaskDone_DelayTmr[15](IN:= SEQ.bSeqStep_TaskDone[15], PT:=T#2S , Q=>SEQ.bSeqStepN_TaskDone_DelayDone[15] );
 SEQ.fbSeqStepN_TaskDone_DelayTmr[20](IN:= SEQ.bSeqStep_TaskDone[20], PT:=T#2S , Q=>SEQ.bSeqStepN_TaskDone_DelayDone[20] );
-SEQ.fbSeqStepN_TaskDone_DelayTmr[25](IN:= SEQ.bSeqStep_TaskDone[25], PT:=T#2S , Q=>SEQ.bSeqStepN_TaskDone_DelayDone[25] );]]></ST>
+SEQ.fbSeqStepN_TaskDone_DelayTmr[25](IN:= SEQ.bSeqStep_TaskDone[25], PT:=T#10S , Q=>SEQ.bSeqStepN_TaskDone_DelayDone[25] );
+SEQ.fbSeqStepN_TaskDone_DelayTmr[30](IN:= SEQ.bSeqStep_TaskDone[30], PT:=T#2S , Q=>SEQ.bSeqStepN_TaskDone_DelayDone[30] );]]></ST>
       </Implementation>
     </Method>
     <LineIds Name="SequencyControl">
@@ -125,12 +135,16 @@ SEQ.fbSeqStepN_TaskDone_DelayTmr[25](IN:= SEQ.bSeqStep_TaskDone[25], PT:=T#2S , 
       <LineId Id="34" Count="0" />
       <LineId Id="51" Count="2" />
       <LineId Id="35" Count="0" />
-      <LineId Id="6" Count="1" />
+      <LineId Id="6" Count="0" />
+      <LineId Id="74" Count="7" />
+      <LineId Id="73" Count="0" />
+      <LineId Id="7" Count="0" />
       <LineId Id="21" Count="0" />
     </LineIds>
     <LineIds Name="SequencyControl.SequencyCondition">
       <LineId Id="6" Count="0" />
       <LineId Id="10" Count="4" />
+      <LineId Id="18" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

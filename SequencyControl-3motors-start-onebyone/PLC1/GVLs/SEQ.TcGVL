@@ -6,9 +6,9 @@ VAR_GLOBAL
 	iStepN:WORD;
 	iSeqStepN: INT;
 	sSeqStepDescription: STRING;
-	bSeqStep_TaskDone: ARRAY[0..25] OF BOOL;
-	fbSeqStepN_TaskDone_DelayTmr:ARRAY[0..25] OF TON;
-	bSeqStepN_TaskDone_DelayDone:ARRAY[0..25] OF BOOL;
+	bSeqStep_TaskDone: ARRAY[0..30] OF BOOL;
+	fbSeqStepN_TaskDone_DelayTmr:ARRAY[0..30] OF TON;
+	bSeqStepN_TaskDone_DelayDone:ARRAY[0..30] OF BOOL;
 
 END_VAR]]></Declaration>
   </GVL>
