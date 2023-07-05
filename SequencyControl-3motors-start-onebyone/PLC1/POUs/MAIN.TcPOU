@@ -6,7 +6,8 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[POU();
+      <ST><![CDATA[SEQ.iStepN:=25;
+POU();
 Water_Tank();
 POU_1();
 POU_3();
@@ -14,6 +15,7 @@ SequencyControl();
 ValveControl();]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
+      <LineId Id="23" Count="0" />
       <LineId Id="2" Count="0" />
       <LineId Id="6" Count="0" />
       <LineId Id="10" Count="0" />

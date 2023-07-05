@@ -3,63 +3,63 @@
   <POU Name="SequencyControl" Id="{7dbeb3d8-e35b-4761-9a31-09968c80dca7}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM SequencyControl
 VAR
-	index:int;
+	index:WORD;
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[CASE SEQ.iSeqStepN OF 
 	 0:    //INIT
 		 SEQ.sSeqStepDescription:='Init';
-		 //SEQ.bSeqStep_TaskDone[0]:=TRUE;  //trigger the sequency
+		 SEQ.bSeqStep_TaskDone[0]:=TRUE;  //trigger the sequency
 		 IF SEQ.bSeqStepN_TaskDone_DelayDone[0] THEN
-			 FOR index:=1 TO 100 DO
+			 FOR index:=1 TO SEQ.iStepN DO
 				 SEQ.bSeqStep_TaskDone[index]:=FALSE;
 			 END_FOR
 			 seq.iSeqStepN:=5;
 		 END_IF
 	5:
 		 SEQ.sSeqStepDescription:='';
-		// SEQ.bSeqStep_TaskDone[5]:=TRUE;
+		 SEQ.bSeqStep_TaskDone[5]:=TRUE;
 		 IF SEQ.bSeqStepN_TaskDone_DelayDone[5] THEN
-			 FOR index:=6 TO 100 DO
+			 FOR index:=6 TO SEQ.iStepN DO
 				 SEQ.bSeqStep_TaskDone[index]:=FALSE;
 			 END_FOR
 			 seq.iSeqStepN:=10;
 		 END_IF
 	10:
 		 SEQ.sSeqStepDescription:='';
-		// SEQ.bSeqStep_TaskDone[10]:=TRUE;
+		 SEQ.bSeqStep_TaskDone[10]:=TRUE;
 		 IF SEQ.bSeqStepN_TaskDone_DelayDone[10] THEN
-			 FOR index:=11 TO 100 DO
+			 FOR index:=11 TO SEQ.iStepN DO
 				 SEQ.bSeqStep_TaskDone[index]:=FALSE;
 			 END_FOR
 			 seq.iSeqStepN:=15;
 		 END_IF
 	15:
   	     SEQ.sSeqStepDescription:='';
-		// SEQ.bSeqStep_TaskDone[15]:=TRUE;
+		 SEQ.bSeqStep_TaskDone[15]:=TRUE;
 		 IF SEQ.bSeqStepN_TaskDone_DelayDone[15] THEN
-			 FOR index:=16 TO 100 DO
+			 FOR index:=0 TO SEQ.iStepN DO
 				 SEQ.bSeqStep_TaskDone[index]:=FALSE;
 			 END_FOR
 			 seq.iSeqStepN:=20;
 		 END_IF
 	20:
   	     SEQ.sSeqStepDescription:='';
-		// SEQ.bSeqStep_TaskDone[20]:=TRUE;
+		 SEQ.bSeqStep_TaskDone[20]:=TRUE;
 		 IF SEQ.bSeqStepN_TaskDone_DelayDone[20] THEN
-			 FOR index:=21 TO 100 DO
+			 FOR index:=21 TO SEQ.iStepN DO
 				 SEQ.bSeqStep_TaskDone[index]:=FALSE;
 			 END_FOR
 			 seq.iSeqStepN:=25;
 		 END_IF
 	25:
 		 SEQ.sSeqStepDescription:='';
-		// SEQ.bSeqStep_TaskDone[25]:=TRUE;
+		 SEQ.bSeqStep_TaskDone[25]:=TRUE;
 		 IF SEQ.bSeqStepN_TaskDone_DelayDone[25] THEN
-			 FOR index:=0 TO 100 DO
-				 SEQ.bSeqStep_TaskDone[index]:=FALSE;
-			 END_FOR
+//			 FOR index:=26 TO SEQ.iStepN DO
+//				 SEQ.bSeqStep_TaskDone[index]:=FALSE;
+//			 END_FOR
 			 seq.iSeqStepN:=0;
 		 END_IF
 END_CASE

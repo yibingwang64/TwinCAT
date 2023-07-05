@@ -3,12 +3,13 @@
   <GVL Name="SEQ" Id="{f6a4f7e6-1238-45af-905c-ff2f7637c769}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
+	iStepN:WORD;
 	iSeqStepN: INT;
 	sSeqStepDescription: STRING;
-	bSeqStep_TaskDone: ARRAY[0..100] OF BOOL;
-	fbSeqStepN_TaskDone_DelayTmr:ARRAY[0..100] OF TON;
-	bSeqStepN_TaskDone_DelayDone:ARRAY[0..100] OF BOOL;
-	
+	bSeqStep_TaskDone: ARRAY[0..25] OF BOOL;
+	fbSeqStepN_TaskDone_DelayTmr:ARRAY[0..25] OF TON;
+	bSeqStepN_TaskDone_DelayDone:ARRAY[0..25] OF BOOL;
+
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>
