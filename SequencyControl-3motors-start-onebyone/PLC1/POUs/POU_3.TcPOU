@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="POU_3" Id="{e9fb6442-46c8-4e88-a00e-ab06a86e777a}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM POU_3
+VAR
+	count:WORD;
+	prePushed:BOOL;
+	pre: INT;
+	fbCal:FBAdd;
+	result:WORD;
+	x:WORD;
+	y:WORD;
+	z:word;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+IF Variables.Button THEN 
+	IF NOT prePushed THEN
+		count:=count+1;
+		prePushed:=TRUE;
+		Variables.LED:=NOT Variables.LED;
+	END_IF
+ELSE
+	prePushed:=FALSE;	
+END_IF
+	
+fbCal(a:=5,b:=3,c=>result);
+
+
+x:=4;
+y:=7;
+//count:=Func(1,4);
+z:=Func(x,y);]]></ST>
+    </Implementation>
+    <Action Name="ACT" Id="{9012192d-863e-4259-aa25-15a8861058de}">
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Action>
+    <Method Name="METH" Id="{358ada81-a0da-45eb-b466-d33d35766cb8}">
+      <Declaration><![CDATA[METHOD PUBLIC METH : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="METH_1" Id="{d93de430-ef48-4e3b-a3d0-e29d17b6d2dc}">
+      <Declaration><![CDATA[METHOD PUBLIC METH_1 : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="POU_3">
+      <LineId Id="10" Count="0" />
+      <LineId Id="5" Count="0" />
+      <LineId Id="11" Count="0" />
+      <LineId Id="13" Count="0" />
+      <LineId Id="15" Count="0" />
+      <LineId Id="20" Count="0" />
+      <LineId Id="14" Count="0" />
+      <LineId Id="17" Count="1" />
+      <LineId Id="12" Count="0" />
+      <LineId Id="8" Count="1" />
+      <LineId Id="31" Count="1" />
+      <LineId Id="29" Count="1" />
+      <LineId Id="24" Count="0" />
+      <LineId Id="28" Count="0" />
+    </LineIds>
+    <LineIds Name="POU_3.ACT">
+      <LineId Id="1" Count="0" />
+    </LineIds>
+    <LineIds Name="POU_3.METH">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="POU_3.METH_1">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

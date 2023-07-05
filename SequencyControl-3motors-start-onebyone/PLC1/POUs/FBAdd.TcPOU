@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FBAdd" Id="{29fb77bd-f8c0-45c3-9487-63510db585b9}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FINAL FBAdd
+VAR_INPUT
+	a:WORD;
+	b:WORD;
+END_VAR
+VAR_OUTPUT
+	c:word;
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[c:=a+b;]]></ST>
+    </Implementation>
+    <Action Name="ACT" Id="{bee8ad85-aa8d-4494-9081-15a1ea7f8e8b}">
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Action>
+    <Method Name="METH" Id="{29786db5-ab6c-4fac-a0bf-0a76773a00e8}">
+      <Declaration><![CDATA[METHOD PUBLIC METH : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="METH_1" Id="{60deb40c-6aea-478c-b679-814979b6539d}">
+      <Declaration><![CDATA[METHOD PRIVATE METH_1 : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="Prop" Id="{ea3b9da3-2cfb-4e08-81e8-de3b707d97e5}">
+      <Declaration><![CDATA[PROPERTY PUBLIC Prop : INT]]></Declaration>
+      <Get Name="Get" Id="{2c202a84-21f1-4f29-ba36-37125ab48062}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[]]></ST>
+        </Implementation>
+      </Get>
+      <Set Name="Set" Id="{0caf9444-e951-41a3-a4cb-321e8e0a0f5e}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[]]></ST>
+        </Implementation>
+      </Set>
+    </Property>
+    <LineIds Name="FBAdd">
+      <LineId Id="9" Count="0" />
+    </LineIds>
+    <LineIds Name="FBAdd.ACT">
+      <LineId Id="1" Count="0" />
+    </LineIds>
+    <LineIds Name="FBAdd.METH">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FBAdd.METH_1">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FBAdd.Prop.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FBAdd.Prop.Set">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

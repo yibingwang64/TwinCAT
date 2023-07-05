@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="Func" Id="{be6bc712-9ba6-4b33-9677-cb41ac6cdef4}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION Func : WORD
+VAR_INPUT
+	a:WORD;
+	b:WORD;
+END_VAR
+VAR
+	c:WORD;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[c:=a+b;
+Func:=c;
+RETURN;]]></ST>
+    </Implementation>
+    <LineIds Name="Func">
+      <LineId Id="16" Count="0" />
+      <LineId Id="18" Count="0" />
+      <LineId Id="7" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

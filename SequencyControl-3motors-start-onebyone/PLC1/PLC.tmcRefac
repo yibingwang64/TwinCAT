@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Refactors>
+  <Renames>
+    <RenamedType>
+      <Type guid="9a501618-8c43-4046-97bc-8e004a818b4f">GVL</Type>
+      <From>GVL</From>
+      <To>Variables</To>
+    </RenamedType>
+  </Renames>
+</Refactors>

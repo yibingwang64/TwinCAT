@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <GVL Name="Variables" Id="{9a501618-8c43-4046-97bc-8e004a818b4f}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+	stop:BOOL;
+	start:BOOL;
+	motor1:BOOL;
+	motor2:BOOL;
+	motor3:BOOL;
+	LED:BOOL;
+	Button:BOOL;
+	Temp:BOOL;
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>
