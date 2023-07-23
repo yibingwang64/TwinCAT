@@ -13,7 +13,8 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[c:=a+b;]]></ST>
+      <ST><![CDATA[c:=a+b;
+c:=a*b;]]></ST>
     </Implementation>
     <Action Name="ACT" Id="{bee8ad85-aa8d-4494-9081-15a1ea7f8e8b}">
       <Implementation>
@@ -59,6 +60,7 @@ END_VAR
     </Property>
     <LineIds Name="FBAdd">
       <LineId Id="9" Count="0" />
+      <LineId Id="20" Count="0" />
     </LineIds>
     <LineIds Name="FBAdd.ACT">
       <LineId Id="1" Count="0" />
